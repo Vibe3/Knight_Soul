@@ -25,11 +25,9 @@ public class Knight : MonoBehaviour
     #region
 
     [Header("¾Þ§@«öÁä")]
-    public KeyCode keycode;
-    public KeyCode keyCodeAttack = KeyCode.Mouse0;
-    public KeyCode keyCodeMoveLeft = KeyCode.D;
-    public KeyCode keyCodeMoveRight = KeyCode.A;
-    public KeyCode keyCodeJump = KeyCode.Space;
+
+    public KeyCode MoveLeft = KeyCode.D;
+    public KeyCode MoveRight = KeyCode.A;
     
     #endregion
 
