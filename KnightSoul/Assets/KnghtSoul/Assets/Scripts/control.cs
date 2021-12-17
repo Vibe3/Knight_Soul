@@ -61,8 +61,6 @@ public class control : MonoBehaviour
     private void Move()
     {
         float h = Input.GetAxis("Horizontal");
-        print("ª±®a¥ª¥k«öÁä­È : " + h);
-
         rig.velocity = new Vector2(h * speed, rig.velocity.y);
 
     }
