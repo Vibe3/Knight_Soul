@@ -21,7 +21,7 @@ public class control : MonoBehaviour
     public string parameterJump = "開關跳躍";
     [Header("攻擊按鍵")]
     public KeyCode keyattack = KeyCode.J;
-    public string parameterAttack = "開關攻擊動作1";
+    public KeyCode keyattack2 = KeyCode.K;
     [Header("攻擊距離"), Range(0, 5)]
     public float attack = 1.3f;
     #endregion
@@ -157,8 +157,20 @@ public class control : MonoBehaviour
     {
         if (Input.GetKeyDown(keyattack))
         {
+            print("攻擊動畫");
+                
+            ani.SetTrigger("觸發攻擊動作1");
+            
+        }
+
+        if (Input.GetKeyDown(keyattack2))
+        {
+                print("攻擊動畫");
+
+                ani.SetTrigger("觸發攻擊動作2");
 
         }
+
     }
 
     

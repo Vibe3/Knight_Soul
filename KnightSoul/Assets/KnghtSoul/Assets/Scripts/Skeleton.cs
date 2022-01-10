@@ -1,5 +1,4 @@
 using UnityEngine;
-//澄 2021/11/7第一次更新
 
 public class Skeleton : MonoBehaviour
 {
@@ -20,4 +19,9 @@ public class Skeleton : MonoBehaviour
     
     #endregion
 
+    /// <summary>
+    /// 敵人行為
+    /// 檢測目標物件是否在追蹤區域
+    /// 追蹤與攻擊目標
+    /// </summary>
 }
