@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: "Assets/KnghtSoul/Assets/\u5834\u666F/\u958B\u59CB.unity"
+    guid: 2c90ebc6ba31c6247b9ba276b708f154
+  - enabled: 1
+    path: "Assets/KnghtSoul/Assets/\u5834\u666F/Sceneone.unity"
+    guid: 7e7b84dab386ff747bdb54032b431c8f
   m_configObjects: {}

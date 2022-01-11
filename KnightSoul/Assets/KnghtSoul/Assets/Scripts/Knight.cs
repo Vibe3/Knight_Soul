@@ -1,34 +1,33 @@
 using UnityEngine;
-//澄 2021/11/7第一次更新
+using UnityEngine.UI;
 
 public class Knight : MonoBehaviour
 {
-    //騎士血量,傷害..等數據
+    int hp = 10;
+    public int max_hp = 10;
 
-    #region
-    
-    [Header("數據") , Range( 1, 200) ]
-    public int Hp = 100;
-    [Range(1 , 10)]
-    public int Attack = 5;
-    [Range(1, 10)]
-    public int Armor = 5;
-    [Range(1, 10)]
-    public int MoveSpeed = 5;
-    [Header("是否能防禦")]
-    public bool Defense = false;
+    public Image blood;
 
-    #endregion
+    private void Start()
+    {
+        print("Start");
+        max_hp = 10;
+        hp = max_hp;
+    }
 
-    //鍵盤操作
+    private void Update()
+    {
+        blood.transform.localScale = new Vector3((float)hp / (float)max_hp, blood.transform.localScale.y, blood.transform.localScale.z);
+    }
 
-    #region
 
-    [Header("操作按鍵")]
 
-    public KeyCode MoveLeft = KeyCode.D;
-    public KeyCode MoveRight = KeyCode.A;
-    
-    #endregion
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Enemy")
+        {
+            hp -= 1;
+        }
+    }
 }
