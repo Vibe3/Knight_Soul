@@ -19,11 +19,6 @@ public class control : MonoBehaviour
     [Header("動畫參數:走路與跳躍")]
     public string parameterWalk = "開關跑步";
     public string parameterJump = "開關跳躍";
-    [Header("攻擊按鍵")]
-    public KeyCode keyattack = KeyCode.J;
-    public KeyCode keyattack2 = KeyCode.K;
-    [Header("攻擊距離"), Range(0, 5)]
-    public float attack = 1.3f;
     #endregion
 
     #region 欄位:私人
@@ -70,16 +65,21 @@ public class control : MonoBehaviour
      
 
     {
-        Move();
+        if (Knight.hp >0 )
+        {
+            Move();
+        }
     }
 
     private void Update()
     {
-        Flip();
         CheckGround();
-        Jump();
-        Attack();
-    }
+        if (Knight.hp > 0)
+        {
+            Jump();
+            Flip();
+        }
+    } 
     #endregion
 
 
@@ -149,30 +149,6 @@ public class control : MonoBehaviour
         }
 
     }
-    
-    ///<summary>
-    ///攻擊
-    ///</summary>
-    private void Attack()
-    {
-        if (Input.GetKeyDown(keyattack))
-        {
-            print("攻擊動畫");
-                
-            ani.SetTrigger("觸發攻擊動作1");
-            
-        }
-
-        if (Input.GetKeyDown(keyattack2))
-        {
-                print("攻擊動畫");
-
-                ani.SetTrigger("觸發攻擊動作2");
-
-        }
-
-    }
-
     
 
 

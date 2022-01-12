@@ -10,6 +10,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     #region 欄位
+    [Header("數據"), Range(1, 200)]
+    public int Hp = 100;
     [Header("檢查追蹤區域大小與位移")]
     public Vector3 v3TrackSize = Vector3.one;
     public Vector3 v3TrackOffset;
@@ -22,6 +24,8 @@ public class Enemy : MonoBehaviour
     public string parameterAttack = "觸發攻擊";
     [Header("動畫參數")]
     public Transform target;
+    [Range(1, 10)]
+    public float AttackDamage = 5;
     [Header("攻擊距離"), Range(0, 5)]
     public float attackDistance = 1.3f;
     [Header("攻擊冷卻時間"), Range(0, 10)]
@@ -29,6 +33,7 @@ public class Enemy : MonoBehaviour
     [Header("檢查攻擊區域大小與位移")]
     public Vector3 v3AttackSize = Vector3.one;
     public Vector3 v3AttackOffset;
+    public HurtSystem hurtSystem;
 
     private float angle = 0;
 
@@ -55,9 +60,19 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawCube(transform.position + transform.TransformDirection(v3AttackOffset), v3AttackSize);
     }
 
+    public void TakeDamage(int damage)
+    {
+        Hp -= damage;
+
+        ani.SetTrigger("觸發受傷");
+    }
     private void Update()
     {
         CheckTargerInArea();
+        if (Hp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     #endregion
 
@@ -95,13 +110,23 @@ public class Enemy : MonoBehaviour
         float distance = Vector3.Distance(target.position, transform.position);
         //print("與目標的距離: " + distance);
         #endregion
-
-        if (distance <= attackDistance) //如果距離小於等於攻擊距離
+        if (Knight.hp > 0)
         {
-            rig.velocity = Vector3.zero; //停止
-            Attack();
+
+            if (distance <= attackDistance) //如果距離小於等於攻擊距離
+            {
+                rig.velocity = Vector3.zero; //停止
+                Attack();
+            }
+        }
+        if (Knight.hp <=0)
+        {
+            ani.SetBool(parameterWalk, false);
+
         }
     }
+
+    
 
     /// <summary>
     /// 攻擊
@@ -118,6 +143,8 @@ public class Enemy : MonoBehaviour
             timerAttack = 0;
             Collider2D hit = Physics2D.OverlapBox(transform.position + transform.TransformDirection(v3AttackOffset), v3AttackSize, 0, layerTarget);
             print("攻擊到物件: " + hit.name);
+            //hurtSystem.Hurt(AttackDamage);
+            hit.GetComponent<Knight>().Hurt(AttackDamage);
         }
     }
 

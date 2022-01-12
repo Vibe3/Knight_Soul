@@ -21,16 +21,18 @@ public class HurtSystem : MonoBehaviour
         hpMax = hp;
     }
 
-    public void Hurt(float damage)
+    /*public void Hurt(float damage)
     {
+        print("¦å¶q");
         hp -= damage;
+        ani.SetTrigger("Ä²µo¨ü¶Ë");
         imgHpBar.fillAmount = hp / hpMax;
-        if (hp <= 0) Dead();
-    }
+        //if (hp <= 0) Dead();
+    }*/
 
-    private void Dead()
+    /*private void Dead()
     {
         ani.SetTrigger(parameterDead);
         onDead.Invoke();
-    }
+    }*/
 }
