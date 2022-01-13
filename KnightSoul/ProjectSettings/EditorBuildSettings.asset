@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/KnghtSoul/Assets/\u5834\u666F/Sceneone.unity"
     guid: 7e7b84dab386ff747bdb54032b431c8f
+  - enabled: 1
+    path: "Assets/KnghtSoul/Assets/\u5834\u666F/Scenetwo.unity"
+    guid: 2d07eac0ccb58ee4cae19a5525ecd3ed
   m_configObjects: {}

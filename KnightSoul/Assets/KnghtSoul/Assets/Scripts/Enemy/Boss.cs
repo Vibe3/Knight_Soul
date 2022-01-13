@@ -6,7 +6,7 @@ public class Boss : MonoBehaviour
 {
     #region 欄位
     [Header("數據"), Range(1, 200)]
-    public int Hp = 100;
+    public static int Hp = 100;
     [Header("檢查追蹤區域大小與位移")]
     public Vector3 v3TrackSize = Vector3.one;
     public Vector3 v3TrackOffset;
@@ -70,17 +70,17 @@ public class Boss : MonoBehaviour
         if (Hp <= 0)
         {
             ani.SetBool("開關死亡", true);
-            StartCoroutine(Deadani());
+            //StartCoroutine(Deadani());
         }
 
     }
-    IEnumerator Deadani()
+    /*IEnumerator Deadani()
     {
         yield return new WaitForSeconds(3F);
         Destroy(gameObject);
 
 
-    }
+    }*/
 
     #endregion
 

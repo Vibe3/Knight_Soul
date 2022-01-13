@@ -4,35 +4,21 @@ using UnityEngine.Events;
 
 public class HurtSystem : MonoBehaviour
 {
-    [Header("血條")]
-    public Image imgHpBar;
-    [Header("血量")]
-    public float hp = 100;
-    public string parameterDead = "觸發死亡";
+    private void Update()
+    {
+        Dead();
+    }
+
+
     [Header("死亡事件")]
     public UnityEvent onDead;
 
-    private float hpMax;
-    private Animator ani;
 
-    private void Awake()
+    private void Dead()
     {
-        ani = GetComponent<Animator>();
-        hpMax = hp;
+        if (Knight.hp <= 0)
+        {
+            onDead.Invoke();
+        }
     }
-
-    /*public void Hurt(float damage)
-    {
-        print("血量");
-        hp -= damage;
-        ani.SetTrigger("觸發受傷");
-        imgHpBar.fillAmount = hp / hpMax;
-        //if (hp <= 0) Dead();
-    }*/
-
-    /*private void Dead()
-    {
-        ani.SetTrigger(parameterDead);
-        onDead.Invoke();
-    }*/
 }

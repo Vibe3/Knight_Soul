@@ -7,6 +7,9 @@ public class passSystem : MonoBehaviour
     public string Target = "ÃM¤h";
     public UnityEvent end;
 
+    public GameObject menu;
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == Target)
@@ -20,6 +23,7 @@ public class passSystem : MonoBehaviour
         if (Knight.hp <= 0)
         {
            end.Invoke();
+           menu.SetActive(true);
         }
     }
 }

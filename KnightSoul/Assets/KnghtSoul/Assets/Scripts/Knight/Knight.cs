@@ -17,7 +17,6 @@ public class Knight : MonoBehaviour
     private void Start()
     {
         print("Start");
-        max_hp = 10;
         hp = max_hp;
         ani = GetComponent<Animator>();
     }
@@ -54,6 +53,7 @@ public class Knight : MonoBehaviour
             ani.SetTrigger("Ä²µo¨ü¶Ë");
         }
     }
+
 
 
 }
