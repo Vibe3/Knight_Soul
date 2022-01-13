@@ -1,6 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
-
 
 /// <summary>
 /// 敵人行為
@@ -66,14 +66,27 @@ public class Enemy : MonoBehaviour
 
         ani.SetTrigger("觸發受傷");
     }
+
+
     private void Update()
     {
+
         CheckTargerInArea();
         if (Hp <= 0)
         {
-            Destroy(gameObject);
+            ani.SetTrigger("觸發死亡");
+            StartCoroutine(Deadani());
         }
+
     }
+    IEnumerator Deadani()
+    {
+        yield return new WaitForSeconds(1F);
+        Destroy(gameObject);
+
+
+    }
+
     #endregion
 
     #region 方法
@@ -85,7 +98,14 @@ public class Enemy : MonoBehaviour
        //2D物理.覆蓋盒形(中心，尺寸，角度)
        Collider2D hit =  Physics2D.OverlapBox(transform.position + transform.TransformDirection(v3TrackOffset), v3TrackSize, 0, layerTarget);
 
-        if (hit) Move(); 
+       //if (hit) Move(); 
+
+       if (Knight.hp > 0 && Hp > 0)
+        {
+            if (hit)Move();
+        }
+
+       
 
 
     }

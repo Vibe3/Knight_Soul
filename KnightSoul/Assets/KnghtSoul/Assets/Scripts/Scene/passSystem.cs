@@ -1,15 +1,18 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class passSystem : MonoBehaviour
 {
     public string Target = "ÃM¤h";
-    public UnityEvent Pass;
     public UnityEvent end;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name == Target) Pass.Invoke();
+        if (collision.name == Target)
+        {
+            SceneManager.LoadScene("Sceneone");
+        }
     }
 
     private void Update()

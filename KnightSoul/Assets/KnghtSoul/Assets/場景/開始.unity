@@ -371,7 +371,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "season \xA9 2021 Version 1.0"
+  m_Text: "Season&Cheng\xA9 2021 Version1.0"
 --- !u!222 &244627089
 CanvasRenderer:
   m_ObjectHideFlags: 0
