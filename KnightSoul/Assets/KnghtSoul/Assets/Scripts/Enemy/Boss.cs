@@ -2,12 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 敵人行為
-/// 檢測目標物件是否在追蹤區域
-/// 追蹤與攻擊目標
-/// </summary>
-public class Enemy : MonoBehaviour
+public class Boss : MonoBehaviour
 {
     #region 欄位
     [Header("數據"), Range(1, 200)]
@@ -22,6 +17,7 @@ public class Enemy : MonoBehaviour
     [Header("動畫參數")]
     public string parameterWalk = "開關走路";
     public string parameterAttack = "觸發攻擊";
+    public string parameterDead = "觸發死亡";
     [Header("動畫參數")]
     public Transform target;
     [Range(1, 10)]
@@ -73,14 +69,14 @@ public class Enemy : MonoBehaviour
         CheckTargerInArea();
         if (Hp <= 0)
         {
-            ani.SetTrigger("觸發死亡");
+            ani.SetBool("開關死亡", true);
             StartCoroutine(Deadani());
         }
 
     }
     IEnumerator Deadani()
     {
-        yield return new WaitForSeconds(1F);
+        yield return new WaitForSeconds(3F);
         Destroy(gameObject);
 
 
@@ -94,17 +90,17 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void CheckTargerInArea()
     {
-       //2D物理.覆蓋盒形(中心，尺寸，角度)
-       Collider2D hit =  Physics2D.OverlapBox(transform.position + transform.TransformDirection(v3TrackOffset), v3TrackSize, 0, layerTarget);
+        //2D物理.覆蓋盒形(中心，尺寸，角度)
+        Collider2D hit = Physics2D.OverlapBox(transform.position + transform.TransformDirection(v3TrackOffset), v3TrackSize, 0, layerTarget);
 
-       //if (hit) Move(); 
+        //if (hit) Move(); 
 
-       if (Knight.hp > 0 && Hp > 0)
+        if (Knight.hp > 0 && Hp > 0)
         {
-            if (hit)Move();
+            if (hit) Move();
         }
 
-       
+
 
 
     }
@@ -138,14 +134,14 @@ public class Enemy : MonoBehaviour
                 Attack();
             }
         }
-        if (Knight.hp <=0)
+        if (Knight.hp <= 0)
         {
             ani.SetBool(parameterWalk, false);
 
         }
     }
 
-    
+
 
     /// <summary>
     /// 攻擊
