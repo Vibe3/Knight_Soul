@@ -10,6 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04f29b8874862eb47bacf94d49d7afce, type: 3}
-  m_Name: New Data
+  m_Name: "\u5973\u795E\u50CF\u5C0D\u8A71"
   m_EditorClassIdentifier: 
-  Dialogues: []
+  Dialogues:
+  - "\u52C7\u58EB,\u662F\u6642\u5019\u5C65\u884C\u4F60\u7684\u8CAC\u4EFB"
+  - "\u53BB\u8490\u96C6\u53E4\u4EE3\u786C\u5E63,\u7136\u5F8C\u6BBA\u6389\u90A3\u500B\u6050\u6016\u7684\u9B54\u738B\u5427"
